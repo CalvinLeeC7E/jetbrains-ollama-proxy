@@ -1,0 +1,44 @@
+### Health Check
+GET http://localhost:3000/health
+
+### Chat Completion
+POST http://localhost:3000/api/chat
+Content-Type: application/json
+
+{
+  "model": "llama2",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello! How are you?"
+    }
+  ]
+}
+
+### Generate Text
+POST http://localhost:3000/api/generate
+Content-Type: application/json
+
+{
+  "model": "llama2",
+  "prompt": "Write a short story about a cat."
+}
+
+### List Models
+GET http://localhost:3000/api/tags
+
+### Pull Model
+POST http://localhost:3000/api/pull
+Content-Type: application/json
+
+{
+  "name": "llama2"
+}
+
+### Delete Model
+DELETE http://localhost:3000/api/delete
+Content-Type: application/json
+
+{
+  "name": "llama2"
+}
