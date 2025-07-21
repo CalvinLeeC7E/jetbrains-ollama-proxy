@@ -14,20 +14,20 @@ A Node.js and TypeScript proxy server that forwards Ollama API requests to a clo
 ## Prerequisites
 
 - Node.js 14.x or higher
-- npm or yarn
+- npm or yarn or pnpm
 
 ## Installation
 
 1. Clone this repository:
    ```bash
-   git clone 
+   git clone git@github.com:CalvinLeeC7E/jetbrains-ollama-proxy.git
    ```
 
 2. Install dependencies:
    ```bash
    npm install
    # or
-   yarn install
+   pnpm i
    ```
 
 3. Create a `.env` file based on the example:
@@ -39,9 +39,9 @@ A Node.js and TypeScript proxy server that forwards Ollama API requests to a clo
    ```
    PORT=3000
    NODE_ENV=development
-   OLLAMA_API_URL=http://localhost:11434
    CLOUD_API_URL=https://your-cloud-api-endpoint.com
    API_KEY=your_api_key_here
+   MODELS=a,b
    LOG_LEVEL=info
    ```
 
@@ -49,13 +49,14 @@ A Node.js and TypeScript proxy server that forwards Ollama API requests to a clo
 
 The following environment variables can be configured:
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| PORT | The port on which the server will listen | 3000 |
-| NODE_ENV | Environment mode (development, production) | development |
-| CLOUD_API_URL | The URL of the cloud API to forward requests to | (required) |
-| API_KEY | API key for authenticating with the cloud API | (required) |
-| LOG_LEVEL | Logging level (error, warn, info, debug) | info |
+| Variable | Description                                     | Default     |
+|----------|-------------------------------------------------|-------------|
+| PORT | The port on which the server will listen        | 3000        |
+| NODE_ENV | Environment mode (development, production)      | development |
+| CLOUD_API_URL | The URL of the cloud API to forward requests to | (required)  |
+| API_KEY | API key for authenticating with the cloud API   | (required)  |
+|MODELS| cloud support LLM names,split with dot          | (required)  |
+| LOG_LEVEL | Logging level (error, warn, info, debug)        | info        |
 
 ## Usage
 
@@ -66,7 +67,7 @@ To run the server in development mode with hot reloading:
 ```bash
 npm run dev
 # or
-yarn dev
+pnpm dev
 ```
 
 ### Production
@@ -74,11 +75,9 @@ yarn dev
 To build and run the server in production mode:
 
 ```bash
-npm run build
-npm start
+npm run start
 # or
-yarn build
-yarn start
+pnpm start
 ```
 
 ## API Endpoints
